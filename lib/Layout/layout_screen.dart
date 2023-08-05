@@ -61,6 +61,7 @@ class LayoutScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const CartScreen()));
+                cubit.getFavoritesData();
               },
               child: Icon(
                 Icons.add_shopping_cart,

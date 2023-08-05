@@ -13,6 +13,7 @@ import 'package:super_marko/shared/components/constants.dart';
 import 'package:super_marko/shared/components/navigator.dart';
 import 'package:super_marko/shared/components/show_toast.dart';
 import 'package:super_marko/shared/components/text_form_field.dart';
+import 'package:super_marko/shared/cubit/cubit.dart';
 import 'package:super_marko/shared/styles/colors.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -170,6 +171,15 @@ class LoginScreen extends StatelessWidget {
                                           email: emailController.text,
                                           password: passwordController.text,
                                         );
+                                        MainCubit.get(context)
+                                          ..getUserData()
+                                          ..getHomeData()
+                                          ..getCategoriesData()
+                                          ..getFavoritesData()
+                                          ..getCartData()
+                                          ..getFaqData()
+                                          ..getOrders()
+                                          ..getNotifications();
                                       }
                                     },
                                     text: 'Sign In',

@@ -70,7 +70,7 @@ class CartScreen extends StatelessWidget {
           body: MainCubit.get(context).cartModel!.data!.cartItems!.isEmpty
               ? Column(
                   children: [
-                    Expanded(child: SvgPicture.asset(Assets.imagesNodata)),
+                    SvgPicture.asset(Assets.imagesNodata),
                     Text(
                       'Your Cart is empty',
                       style: Theme.of(context).textTheme.headlineSmall,

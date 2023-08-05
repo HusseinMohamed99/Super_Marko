@@ -7,5 +7,6 @@
         "roboto",
         "screenutil",
         "Wakelock"
-    ]
+    ],
+    "dart.flutterSdkPath": "C:\\development\\flutter"
 }

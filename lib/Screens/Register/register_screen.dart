@@ -195,6 +195,15 @@ class RegisterScreen extends StatelessWidget {
                                         name: nameController.text,
                                         phone: phoneController.text,
                                       );
+                                      MainCubit.get(context)
+                                        ..getUserData()
+                                        ..getHomeData()
+                                        ..getCategoriesData()
+                                        ..getFavoritesData()
+                                        ..getCartData()
+                                        ..getFaqData()
+                                        ..getOrders()
+                                        ..getNotifications();
                                     }
                                   },
                                   text: 'Sign UP',

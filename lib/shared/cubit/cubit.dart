@@ -68,9 +68,18 @@ class MainCubit extends Cubit<MainStates> {
       getUserData();
       getHomeData();
     }
-    if (currentIndex == 1) getCategoriesData();
-    if (currentIndex == 2) getFavoritesData();
-    if (currentIndex == 3) getUserData();
+    if (currentIndex == 1) {
+      getCategoriesData();
+    }
+
+    if (currentIndex == 2) {
+      getFavoritesData();
+    }
+
+    if (currentIndex == 3) {
+      getUserData();
+    }
+
     emit(ChangeNavBarItem());
   }
 
