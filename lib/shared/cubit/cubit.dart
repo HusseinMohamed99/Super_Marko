@@ -162,23 +162,18 @@ class MainCubit extends Cubit<MainStates> {
       token: token,
     ).then((value) {
       homeModel = HomeModel.fromJson(value.data);
-      for (var element in homeModel!.data!.products) {
-        favorites.addAll({element.id!: element.inFavorites!});
-      }
-      for (var element in homeModel!.data!.products) {
-        carting.addAll({element.id!: element.inCart!});
-      }
-      // for (var element in homeModel!.data!.products) {
-      //   favorites.addAll({
-      //     element.id: element.inFavorites,
-      //   });
-      // }
 
-      //  for (var element in homeModel!.data!.products) {
-      //    cart.addAll({
-      //      element.id: element.inCart,
-      //    });
-      //  }
+      for (var element in homeModel!.data!.products) {
+        favorites.addAll({
+          element.id: element.inFavorites,
+        });
+      }
+
+       for (var element in homeModel!.data!.products) {
+         carting.addAll({
+           element.id: element.inCart,
+         });
+       }
       emit(HomeSuccessStates());
     }).catchError((error) {
       if (kDebugMode) {
@@ -231,7 +226,7 @@ class MainCubit extends Cubit<MainStates> {
   }
 
   ChangeCartModel? changeCartModel;
-  Map<int, bool> carting = {};
+  Map<dynamic, dynamic> carting = {};
 
   void changeCart(int productId) {
     emit(ChangeCartStates());
@@ -264,7 +259,7 @@ class MainCubit extends Cubit<MainStates> {
   CartModel? cartModel;
 
   void getCartData() {
-    // emit(CartLoadingStates());
+   emit(CartLoadingStates());
     DioHelper.getData(url: carts, token: token).then((value) {
       cartModel = CartModel.fromJson(value.data);
 
@@ -307,9 +302,10 @@ class MainCubit extends Cubit<MainStates> {
   }
 
   ChangeFavoritesModel? changeFavoritesModel;
-  Map<int, bool> favorites = {};
+  Map<dynamic, dynamic> favorites = {};
+
   void changeFavorites(int productID) {
-    favorites[productID] = !favorites[productID]!;
+    favorites[productID] = !favorites[productID];
     emit(ChangeFavoritesStates());
 
     DioHelper.postData(url: favorite, token: token, data: {
@@ -334,7 +330,7 @@ class MainCubit extends Cubit<MainStates> {
   FavoritesModel? favoritesModel;
 
   void getFavoritesData() {
-    //emit(FavoritesLoadingStates());
+    emit(FavoritesLoadingStates());
     DioHelper.getData(
       url: favorite,
       token: token,
@@ -508,7 +504,7 @@ class MainCubit extends Cubit<MainStates> {
   OrdersModel? ordersModel;
 
   void getOrders() {
-    //  emit(GetOrdersLoadingState());
+    emit(GetOrdersLoadingState());
     DioHelper.getData(
       url: orders,
       token: token,

@@ -20,39 +20,48 @@ class FavoritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<MainCubit, MainStates>(
       builder: (context, state) {
-        return  MainCubit.get(context).favoritesModel!.data!.data.isEmpty || MainCubit.get(context).favoritesModel ==null ? Column(
-          children: [
-            SvgPicture.asset(Assets.imagesNodata),
-            Text(
-              'Your Favorite is empty',
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-            Text(
-              'Be Sure to fill your favorite with something you like',
-              style: Theme.of(context).textTheme.labelLarge,
-            )
-          ],
-        )  :ConditionalBuilder(
-          condition: state is !FavoritesLoadingStates && MainCubit.get(context).favoritesModel != null,
-          builder: (BuildContext context) {
-            return ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) => ProductList(
-                favoritesModel:
-                    MainCubit.get(context).favoritesModel!.data!.data[index],
-              ),
-              separatorBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.all(8.0).r,
-                child: const MyDivider(),
-              ),
-              itemCount:
-                  MainCubit.get(context).favoritesModel!.data!.data.length,
-            );
-          },
-          fallback: (BuildContext context) {
-            return const CircularProgressIndicator();
-          },
-        );
+        return MainCubit.get(context).favoritesModel!.data!.data.isEmpty ||
+                MainCubit.get(context).favoritesModel == null
+            ? Column(
+                children: [
+                  SvgPicture.asset(Assets.imagesNodata),
+                  Text(
+                    'Your Favorite is empty',
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                  Text(
+                    'Be Sure to fill your favorite with something you like',
+                    style: Theme.of(context).textTheme.labelLarge,
+                  )
+                ],
+              )
+            : ConditionalBuilder(
+                condition: state is! FavoritesLoadingStates &&
+                    MainCubit.get(context).favoritesModel != null,
+                builder: (BuildContext context) {
+                  return ListView.separated(
+                    physics: const BouncingScrollPhysics(),
+                    itemBuilder: (context, index) => ProductList(
+                      favoritesModel: MainCubit.get(context)
+                          .favoritesModel!
+                          .data!
+                          .data[index],
+                    ),
+                    separatorBuilder: (context, index) => Padding(
+                      padding: const EdgeInsets.all(8.0).r,
+                      child: const MyDivider(),
+                    ),
+                    itemCount: MainCubit.get(context)
+                        .favoritesModel!
+                        .data!
+                        .data
+                        .length,
+                  );
+                },
+                fallback: (BuildContext context) {
+                  return const CircularProgressIndicator();
+                },
+              );
       },
       listener: (context, state) {
         if (state is ChangeFavoritesSuccessStates) {
