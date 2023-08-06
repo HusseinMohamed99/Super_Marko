@@ -399,10 +399,10 @@ class MainCubit extends Cubit<MainStates> {
     }
   }
 
-  SearchModel? searchModel;
-  var controller = TextEditingController();
 
-  void getSearch({required String text}) {
+  SearchModel? searchModel;
+  var searchController = TextEditingController();
+  void getSearch( String text) {
     emit(SearchLoadingStates());
     DioHelper.postData(url: search, token: token, data: {
       'search': text,
@@ -416,6 +416,12 @@ class MainCubit extends Cubit<MainStates> {
       emit(SearchErrorStates());
     });
   }
+  void clearSearchData() {
+    searchController.clear();
+    searchModel ;
+  }
+
+
 
   int activeIndex = 0;
 

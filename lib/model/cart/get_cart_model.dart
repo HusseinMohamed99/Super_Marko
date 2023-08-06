@@ -21,13 +21,6 @@ class CartData {
     json['cart_items'].forEach((v) {
       cartItems.add(CartItems.fromJson(v));
     });
-
-    // if (json['cart_items'] != null) {
-    //   // cartItems = [];
-    //   json['cart_items'].forEach((v) {
-    //     cartItems.add(CartItems.fromJson(v));
-    //   });
-    // }
     subTotal = json['sub_total'];
     total = json['total'];
   }
