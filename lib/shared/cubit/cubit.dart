@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:super_marko/Screens/Cart/cart_screen.dart';
 import 'package:super_marko/Screens/Categories/category_screen.dart';
 import 'package:super_marko/Screens/Favorites/favorite_screen.dart';
 import 'package:super_marko/Screens/ProductsHome/product_home_screen.dart';
@@ -36,55 +37,56 @@ class MainCubit extends Cubit<MainStates> {
 
   static MainCubit get(context) => BlocProvider.of(context);
 
-  Map<dynamic, dynamic> favorites = {};
-  Map<dynamic, dynamic> cart = {};
-
   int currentIndex = 0;
 
-  List<Widget> pages = [
-    const ProductsScreen(),
-    const CategoriesScreen(),
-    const FavoritesScreen(),
-    const SettingScreen(),
+  List<Widget> pages = const [
+    ProductsScreen(),
+    CategoriesScreen(),
+    CartScreen(),
+    FavoritesScreen(),
+    SettingScreen(),
   ];
 
-  List<BottomNavigationBarItem> bottomNavigationBarItem = [
-    const BottomNavigationBarItem(icon: Icon(IconBroken.Home), label: ''),
-    const BottomNavigationBarItem(icon: Icon(IconBroken.Category), label: ''),
-    const BottomNavigationBarItem(icon: Icon(IconBroken.Heart), label: ''),
-    const BottomNavigationBarItem(icon: Icon(IconBroken.Setting), label: ''),
+  List<BottomNavigationBarItem> bottomNavigationBarItem = const [
+    BottomNavigationBarItem(icon: Icon(IconBroken.Home), label: ''),
+    BottomNavigationBarItem(icon: Icon(IconBroken.Category), label: ''),
+    BottomNavigationBarItem(icon: Icon(IconBroken.Bag), label: ''),
+    BottomNavigationBarItem(icon: Icon(IconBroken.Heart), label: ''),
+    BottomNavigationBarItem(icon: Icon(IconBroken.Setting), label: ''),
   ];
 
   List<String> titles = [
-    'Super Marko 🛒',
-    'Category 💼',
-    'Favorite ❤',
-    'Settings ⚙',
+    'Super Marko',
+    'Category 👜',
+    'Cart 🛒',
+    'Favorite ❤️',
+    'Settings ⚙️',
   ];
 
   void changeNavBar(int index) {
     currentIndex = index;
     if (currentIndex == 0) {
-      getUserData();
       getHomeData();
-    }
-    if (currentIndex == 1) {
       getCategoriesData();
-    }
-
-    if (currentIndex == 2) {
+      getCartData();
+      getOrders();
       getFavoritesData();
-    }
-
-    if (currentIndex == 3) {
       getUserData();
     }
+
+    if (currentIndex == 1) getCategoriesData();
+
+    if (currentIndex == 2) getCartData();
+
+    if (currentIndex == 3) getFavoritesData();
+
+    if (currentIndex == 4) getUserData();
 
     emit(ChangeNavBarItem());
   }
 
   bool isDark = false;
-  Color backgroundColor = Colors.white;
+  Color backgroundColor = AppMainColors.whiteColor;
 
   void changeAppMode({bool? fromShared}) {
     if (fromShared == null) {
@@ -161,15 +163,22 @@ class MainCubit extends Cubit<MainStates> {
     ).then((value) {
       homeModel = HomeModel.fromJson(value.data);
       for (var element in homeModel!.data!.products) {
-        favorites.addAll({
-          element.id: element.inFavorites,
-        });
+        favorites.addAll({element.id!: element.inFavorites!});
       }
       for (var element in homeModel!.data!.products) {
-        cart.addAll({
-          element.id: element.inCart,
-        });
+        carting.addAll({element.id!: element.inCart!});
       }
+      // for (var element in homeModel!.data!.products) {
+      //   favorites.addAll({
+      //     element.id: element.inFavorites,
+      //   });
+      // }
+
+      //  for (var element in homeModel!.data!.products) {
+      //    cart.addAll({
+      //      element.id: element.inCart,
+      //    });
+      //  }
       emit(HomeSuccessStates());
     }).catchError((error) {
       if (kDebugMode) {
@@ -255,9 +264,10 @@ class MainCubit extends Cubit<MainStates> {
   CartModel? cartModel;
 
   void getCartData() {
-    emit(CartLoadingStates());
+    // emit(CartLoadingStates());
     DioHelper.getData(url: carts, token: token).then((value) {
       cartModel = CartModel.fromJson(value.data);
+
       emit(GetCartSuccessStates());
     }).catchError((error) {
       if (kDebugMode) {
@@ -297,27 +307,26 @@ class MainCubit extends Cubit<MainStates> {
   }
 
   ChangeFavoritesModel? changeFavoritesModel;
-
+  Map<int, bool> favorites = {};
   void changeFavorites(int productID) {
-    favorites[productID] = !favorites[productID];
+    favorites[productID] = !favorites[productID]!;
     emit(ChangeFavoritesStates());
 
     DioHelper.postData(url: favorite, token: token, data: {
       'product_id': productID,
     }).then((value) {
       changeFavoritesModel = ChangeFavoritesModel.fromJson(value.data);
-      if (kDebugMode) {
-        print(value.data);
-      }
+
+      if (kDebugMode) {}
 
       if (!changeFavoritesModel!.status!) {
-        favorites[productID] = !favorites[productID];
+        favorites[productID] = !favorites[productID]!;
       } else {
         getFavoritesData();
       }
       emit(ChangeFavoritesSuccessStates(changeFavoritesModel!));
     }).catchError((error) {
-      favorites[productID] = !favorites[productID];
+      favorites[productID] = !favorites[productID]!;
       emit(ChangeFavoritesErrorStates());
     });
   }
@@ -325,12 +334,13 @@ class MainCubit extends Cubit<MainStates> {
   FavoritesModel? favoritesModel;
 
   void getFavoritesData() {
-    emit(FavoritesLoadingStates());
+    //emit(FavoritesLoadingStates());
     DioHelper.getData(
       url: favorite,
       token: token,
     ).then((value) {
       favoritesModel = FavoritesModel.fromJson(value.data);
+
       emit(GetFavoritesSuccessStates());
     }).catchError((error) {
       if (kDebugMode) {
@@ -498,12 +508,13 @@ class MainCubit extends Cubit<MainStates> {
   OrdersModel? ordersModel;
 
   void getOrders() {
-    emit(GetOrdersLoadingState());
+    //  emit(GetOrdersLoadingState());
     DioHelper.getData(
       url: orders,
       token: token,
     ).then((value) {
       ordersModel = OrdersModel.fromJson(value.data);
+
       emit(GetOrdersSuccessState());
     }).catchError((error) {
       emit(GetOrdersErrorState(error.toString()));

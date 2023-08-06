@@ -46,6 +46,12 @@ class LoginScreen extends StatelessWidget {
                       key: "token", value: state.userModel.data!.token)
                   .then((value) {
                 token = state.userModel.data!.token!;
+                MainCubit.get(context).getHomeData();
+                MainCubit.get(context).getCategoriesData();
+                MainCubit.get(context).getCartData();
+                MainCubit.get(context).getOrders();
+                MainCubit.get(context).getFavoritesData();
+                MainCubit.get(context).getUserData();
                 navigateAndFinish(context, const LayoutScreen());
               });
             } else {
@@ -171,15 +177,6 @@ class LoginScreen extends StatelessWidget {
                                           email: emailController.text,
                                           password: passwordController.text,
                                         );
-                                        MainCubit.get(context)
-                                          ..getUserData()
-                                          ..getHomeData()
-                                          ..getCategoriesData()
-                                          ..getFavoritesData()
-                                          ..getCartData()
-                                          ..getFaqData()
-                                          ..getOrders()
-                                          ..getNotifications();
                                       }
                                     },
                                     text: 'Sign In',

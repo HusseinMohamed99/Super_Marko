@@ -7,6 +7,7 @@ import 'package:super_marko/generated/assets.dart';
 import 'package:super_marko/model/favorite/favorite_model.dart';
 import 'package:super_marko/shared/components/image_with_shimmer.dart';
 import 'package:super_marko/shared/components/my_divider.dart';
+import 'package:super_marko/shared/components/show_toast.dart';
 import 'package:super_marko/shared/cubit/cubit.dart';
 import 'package:super_marko/shared/cubit/state.dart';
 import 'package:super_marko/shared/styles/colors.dart';
@@ -18,47 +19,63 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<MainCubit, MainStates>(
-      listener: (context, state) {},
       builder: (context, state) {
-        return Scaffold(
-          body: MainCubit.get(context).favoritesModel!.data!.data!.isEmpty
-              ? Column(
-                  children: [
-                    SvgPicture.asset(Assets.imagesNodata),
-                    Text(
-                      'Your Favorites is empty',
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    Text(
-                      'Be sure to fill your favorite with something you like',
-                      style: Theme.of(context).textTheme.labelLarge,
-                    ),
-                  ],
-                )
-              : ConditionalBuilder(
-                  condition: state is! FavoritesLoadingStates,
-                  builder: (context) => ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    itemBuilder: (context, index) => ProductList(
-                      favoritesModel: MainCubit.get(context)
-                          .favoritesModel!
-                          .data!
-                          .data![index],
-                    ),
-                    separatorBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.all(8.0).r,
-                      child: const MyDivider(),
-                    ),
-                    itemCount: MainCubit.get(context)
-                        .favoritesModel!
-                        .data!
-                        .data!
-                        .length,
-                  ),
-                  fallback: (context) =>
-                      const Center(child: CircularProgressIndicator()),
-                ),
+        return  MainCubit.get(context).favoritesModel!.data!.data.isEmpty || MainCubit.get(context).favoritesModel ==null ? Column(
+          children: [
+            SvgPicture.asset(Assets.imagesNodata),
+            Text(
+              'Your Favorite is empty',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+            Text(
+              'Be Sure to fill your favorite with something you like',
+              style: Theme.of(context).textTheme.labelLarge,
+            )
+          ],
+        )  :ConditionalBuilder(
+          condition: state is !FavoritesLoadingStates && MainCubit.get(context).favoritesModel != null,
+          builder: (BuildContext context) {
+            return ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) => ProductList(
+                favoritesModel:
+                    MainCubit.get(context).favoritesModel!.data!.data[index],
+              ),
+              separatorBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.all(8.0).r,
+                child: const MyDivider(),
+              ),
+              itemCount:
+                  MainCubit.get(context).favoritesModel!.data!.data.length,
+            );
+          },
+          fallback: (BuildContext context) {
+            return const CircularProgressIndicator();
+          },
         );
+      },
+      listener: (context, state) {
+        if (state is ChangeFavoritesSuccessStates) {
+          if (state.model.status!) {
+            showToast(
+              text: state.model.message!,
+              state: ToastStates.success,
+            );
+          } else {
+            showToast(
+              text: state.model.message!,
+              state: ToastStates.error,
+            );
+          }
+        }
+        if (state is ChangeCartSuccessStates) {
+          if (state.model.status!) {
+            showToast(
+              text: state.model.message!,
+              state: ToastStates.success,
+            );
+          }
+        }
       },
     );
   }
@@ -143,9 +160,10 @@ class ProductList extends StatelessWidget {
                           child: IconButton(
                             icon: Icon(
                               IconBroken.Heart,
-                              color: cubit.favorites[favoritesModel.product!.id]
-                                  ? AppMainColors.redColor
-                                  : Colors.grey,
+                              color:
+                                  cubit.favorites[favoritesModel.product!.id]!
+                                      ? AppMainColors.redColor
+                                      : Colors.grey,
                               size: 24.sp,
                             ),
                             onPressed: () {

@@ -3,7 +3,6 @@ class FavoritesModel {
   String? message;
   Data? data;
 
-  FavoritesModel({this.status, this.message, this.data});
 
   FavoritesModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
@@ -14,7 +13,7 @@ class FavoritesModel {
 
 class Data {
   int? currentPage;
-  List<FavoritesData>? data;
+  List<FavoritesData> data = [];
   String? firstPageUrl;
   int? from;
   int? lastPage;
@@ -28,12 +27,16 @@ class Data {
 
   Data.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
-    if (json['data'] != null) {
-      data = <FavoritesData>[];
-      json['data'].forEach((v) {
-        data!.add(FavoritesData.fromJson(v));
-      });
-    }
+    json['data'];
+    json['data'].forEach((v) {
+      data.add(FavoritesData.fromJson(v));
+    });
+    // if (json['data'] != null) {
+    //  // data = <FavoritesData>[];
+    //   json['data'].forEach((v) {
+    //     data.add(FavoritesData.fromJson(v));
+    //   });
+    // }
     firstPageUrl = json['first_page_url'];
     from = json['from'];
     lastPage = json['last_page'];

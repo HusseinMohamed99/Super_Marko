@@ -19,11 +19,10 @@ import 'package:wakelock/wakelock.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Wakelock.enable();
-  ScreenUtil.ensureScreenSize();
+  await ScreenUtil.ensureScreenSize();
   Bloc.observer = MyBlocObserver();
-  DioHelper.init();
   await CacheHelper.init();
-
+  DioHelper.init();
   bool? isDark = CacheHelper.getBoolean(key: 'isDark');
   Widget widget;
 
@@ -64,13 +63,13 @@ class Myapp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => MainCubit()
+            ..getFavoritesData()
+            ..getOrders()
+            ..getCartData()
             ..getUserData()
             ..getHomeData()
             ..getCategoriesData()
-            ..getFavoritesData()
-            ..getCartData()
             ..getFaqData()
-            ..getOrders()
             ..getNotifications()
             ..changeAppMode(fromShared: isDark),
         ),

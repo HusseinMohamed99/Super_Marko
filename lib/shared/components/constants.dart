@@ -9,6 +9,8 @@ String? token = '';
 
 String uId = '';
 
-int cartLength = 0;
+int cartLength =0 ;
+int favoriteLength =0 ;
+int orderLength =0 ;
 
 String? base64Image;

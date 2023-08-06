@@ -5,23 +5,29 @@ class CartModel {
 
   CartModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
-    data = CartData.fromJson(json['data']);
+    data = json['data'] != null ?  CartData.fromJson(json['data']) : null;
   }
 
 }
 
 class CartData {
-   List<CartItems>? cartItems;
+   List<CartItems> cartItems = [];
   dynamic subTotal;
   dynamic total;
 
   CartData.fromJson(Map<String, dynamic> json) {
-    if (json['cart_items'] != null) {
-      cartItems = [];
-      json['cart_items'].forEach((v) {
-        cartItems!.add(CartItems.fromJson(v));
-      });
-    }
+    json['cart_items'];
+
+    json['cart_items'].forEach((v) {
+      cartItems.add(CartItems.fromJson(v));
+    });
+
+    // if (json['cart_items'] != null) {
+    //   // cartItems = [];
+    //   json['cart_items'].forEach((v) {
+    //     cartItems.add(CartItems.fromJson(v));
+    //   });
+    // }
     subTotal = json['sub_total'];
     total = json['total'];
   }

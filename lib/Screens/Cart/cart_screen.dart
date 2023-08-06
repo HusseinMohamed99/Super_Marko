@@ -1,3 +1,4 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,6 +23,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    cartLength = MainCubit.get(context).cartModel!.data!.cartItems.length;
     return BlocConsumer<MainCubit, MainStates>(
       listener: (context, state) {
         if (state is ChangeFavoritesSuccessStates) {
@@ -47,58 +49,49 @@ class CartScreen extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        cartLength = MainCubit.get(context).cartModel!.data!.cartItems!.length;
         return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'Cart',
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-            leading: IconButton(
-              onPressed: () {
-                pop(context);
-              },
-              icon: Icon(
-                IconBroken.Arrow___Left_Circle,
-                size: 24.sp,
-                color: MainCubit.get(context).isDark
-                    ? AppMainColors.orangeColor
-                    : AppMainColors.whiteColor,
-              ),
-            ),
-          ),
-          body: MainCubit.get(context).cartModel!.data!.cartItems!.isEmpty
-              ? Column(
-                  children: [
-                    SvgPicture.asset(Assets.imagesNodata),
-                    Text(
-                      'Your Cart is empty',
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    Text(
-                      'Be Sure to fill your cart with something you like',
-                      style: Theme.of(context).textTheme.labelLarge,
+          body: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(children: [
+              MainCubit.get(context).cartModel!.data!.cartItems.isEmpty ||  MainCubit.get(context).cartModel ==null
+                  ? Column(
+                      children: [
+                        SvgPicture.asset(Assets.imagesNodata),
+                        Text(
+                          'Your Cart is empty',
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                        Text(
+                          'Be Sure to fill your cart with something you like',
+                          style: Theme.of(context).textTheme.labelLarge,
+                        )
+                      ],
                     )
-                  ],
-                )
-              : SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(children: [
-                    ListView.separated(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) => CartProducts(
-                        cartModel: MainCubit.get(context)
-                            .cartModel!
-                            .data!
-                            .cartItems![index],
-                        index: index,
-                      ),
-                      separatorBuilder: (context, index) => const MyDivider(),
-                      itemCount: cartLength,
+                  : ConditionalBuilder(
+                      condition: state is! CartLoadingStates ||
+                          MainCubit.get(context).cartModel != null,
+                      builder: (BuildContext context) {
+                        return ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) => CartProducts(
+                            cartModel: MainCubit.get(context)
+                                .cartModel!
+                                .data!
+                                .cartItems[index],
+                            index: index,
+                          ),
+                          separatorBuilder: (context, index) =>
+                              const MyDivider(),
+                          itemCount: cartLength,
+                        );
+                      },
+                      fallback: (BuildContext context) {
+                        return const Center(child: CircularProgressIndicator());
+                      },
                     ),
-                  ]),
-                ),
+            ]),
+          ),
           bottomNavigationBar: BottomAppBar(
             elevation: 20,
             color: AppMainColors.dividerColor,

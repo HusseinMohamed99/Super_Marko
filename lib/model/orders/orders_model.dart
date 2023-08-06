@@ -9,15 +9,19 @@ class OrdersModel {
 }
 
 class Data {
-  List<OrdersDetails>? ordersDetails;
+  List<OrdersDetails> ordersDetails = [];
 
   Data.fromJson(Map<String, dynamic> json) {
-    if (json['data'] != null) {
-      ordersDetails = [];
-      json['data'].forEach((v) {
-        ordersDetails!.add(OrdersDetails.fromJson(v));
-      });
-    }
+    json['data'];
+    json['data'].forEach((v) {
+      ordersDetails.add(OrdersDetails.fromJson(v));
+    });
+    // if (json['data'] != null) {
+    //   ordersDetails = [];
+    //   json['data'].forEach((v) {
+    //     ordersDetails.add(OrdersDetails.fromJson(v));
+    //   });
+    // }
     // json['data'].forEach((value) {
     //   ordersDetails!.add(OrdersDetails.fromJson(value));
     // });

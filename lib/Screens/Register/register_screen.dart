@@ -49,6 +49,12 @@ class RegisterScreen extends StatelessWidget {
                       key: "token", value: state.userModel.data!.token)
                   .then((value) {
                 token = state.userModel.data!.token!;
+                MainCubit.get(context).getHomeData();
+                MainCubit.get(context).getCategoriesData();
+                MainCubit.get(context).getCartData();
+                MainCubit.get(context).getOrders();
+                MainCubit.get(context).getFavoritesData();
+                MainCubit.get(context).getUserData();
                 navigateAndFinish(context, const LayoutScreen());
               });
             } else {
@@ -195,15 +201,6 @@ class RegisterScreen extends StatelessWidget {
                                         name: nameController.text,
                                         phone: phoneController.text,
                                       );
-                                      MainCubit.get(context)
-                                        ..getUserData()
-                                        ..getHomeData()
-                                        ..getCategoriesData()
-                                        ..getFavoritesData()
-                                        ..getCartData()
-                                        ..getFaqData()
-                                        ..getOrders()
-                                        ..getNotifications();
                                     }
                                   },
                                   text: 'Sign UP',

@@ -119,7 +119,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   },
                   child: Icon(
                     IconBroken.Heart,
-                    color: cubit.favorites[cubit.productResponse!.data!.id]
+                    color: cubit.favorites[cubit.productResponse!.data!.id]!
                         ? Colors.red
                         : Colors.grey,
                     size: 25.sp,
@@ -209,7 +209,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                             MainAxisAlignment.center,
                                         children: [
                                           MainCubit.get(context)
-                                                  .cart[productModel!.id]
+                                                  .carting[productModel!.id]!
                                               ? Text(
                                                   'Add To Cart',
                                                   style: Theme.of(context)

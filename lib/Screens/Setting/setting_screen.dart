@@ -88,7 +88,6 @@ class SettingScreen extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     MainCubit.get(context).getOrders();
-
                     navigateTo(context, const OrdersScreen());
                   },
                   child: Container(
