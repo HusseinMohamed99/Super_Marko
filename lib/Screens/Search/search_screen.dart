@@ -14,9 +14,9 @@ import 'package:super_marko/shared/styles/colors.dart';
 import 'package:super_marko/shared/styles/icon_broken.dart';
 
 class SearchScreen extends StatelessWidget {
-  MainCubit mainCubit;
+ final MainCubit mainCubit;
   SearchScreen(this.mainCubit, {super.key});
-  TextEditingController searchController = TextEditingController();
+ final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
