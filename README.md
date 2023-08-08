@@ -69,6 +69,7 @@
   <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/aboutUs_dark.jpg" width="250" />
     <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/logout_dark.jpg" width="250" />
 </p>
+
 - [cached_network_image](https://pub.dev/packages/cached_network_image)
 - [carousel_slider](https://pub.dev/packages/carousel_slider)
 - [cupertino_icons](https://pub.dev/packages/cupertino_icons)
