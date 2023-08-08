@@ -34,6 +34,7 @@ void main() async {
     print(token);
   }
 
+
   if (onBoarding != null) {
     if (token != null) {
       widget = const LayoutScreen();
@@ -91,9 +92,12 @@ class Myapp extends StatelessWidget {
                   title: 'Super Marko',
                   theme: getThemeData[AppTheme.lightTheme],
                   darkTheme: getThemeData[AppTheme.darkTheme],
-                  themeMode: MainCubit.get(context).isDark
-                      ? ThemeMode.light
-                      : ThemeMode.dark,
+                  themeMode: token == null
+                      ? ThemeMode.system
+                      : MainCubit.get(context).isDark
+                          ? ThemeMode.light
+                          : ThemeMode.dark,
+
                   debugShowCheckedModeBanner: false,
                   home: startWidget,
                 );

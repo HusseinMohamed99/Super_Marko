@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -71,12 +70,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-          statusBarIconBrightness: Brightness.dark,
-          statusBarBrightness: Brightness.light,
-        ),
-        backgroundColor: Colors.white,
         actions: [
           defaultTextButton(
             function: submit,
