@@ -39,6 +39,10 @@ class Assets {
   static const String screenShotsMyOrderLight = 'assets/screenShots/myOrder_light.jpg';
   static const String screenShotsNotificationsDark = 'assets/screenShots/notifications_dark.jpg';
   static const String screenShotsNotificationsLight = 'assets/screenShots/notifications_light.jpg';
+  static const String screenShotsOnBoardingDark1 = 'assets/screenShots/onBoarding_dark1.jpg';
+  static const String screenShotsOnBoardingDark2 = 'assets/screenShots/onBoarding_dark2.jpg';
+  static const String screenShotsOnBoardingDark3 = 'assets/screenShots/onBoarding_dark3.jpg';
+  static const String screenShotsOnBoardingDark4 = 'assets/screenShots/onBoarding_dark4.jpg';
   static const String screenShotsOnBoardingLight1 = 'assets/screenShots/onBoarding_light1.jpg';
   static const String screenShotsOnBoardingLight2 = 'assets/screenShots/onBoarding_light2.jpg';
   static const String screenShotsOnBoardingLight3 = 'assets/screenShots/onBoarding_light3.jpg';
@@ -61,8 +65,8 @@ class Assets {
   static const String screenShotsSearchLight2 = 'assets/screenShots/search_light2.jpg';
   static const String screenShotsSettingDark = 'assets/screenShots/setting_dark.jpg';
   static const String screenShotsSettingsLight = 'assets/screenShots/settings_light.jpg';
-  static const String screenShotsSplashDark = 'assets/screenShots/splash_dark.png';
-  static const String screenShotsSplashLight = 'assets/screenShots/splash_light.png';
+  static const String screenShotsSplashDark = 'assets/screenShots/splash_dark.jpg';
+  static const String screenShotsSplashLight = 'assets/screenShots/splash_light.jpg';
   static const String screenShotsThemeDark = 'assets/screenShots/theme_dark.jpg';
   static const String screenShotsThemeLight = 'assets/screenShots/theme_light.jpg';
 
