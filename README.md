@@ -2,9 +2,9 @@
 
 ## Download App ![GitHub All Releases](https://img.shields.io/github/downloads/HusseinMohamed99/Super_Marko/total?color=green)
 <a href="https://github.com/HusseinMohamed99/Super_Marko/releases/download/v2.0.0/Super.Marko.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
-## Screenshots
+## Screenshots Light Theme:
 <p>
-  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/splash_light.png" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/splash_light.png" width="250" height="250" />
   <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/onBoarding_light1.jpg" width="250" />
   <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/onBoarding_light2.jpg" width="250" />
   <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/onBoarding_light3.jpg" width="250" />
@@ -34,10 +34,6 @@
   <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/faqs_light.jpg" width="250" />
   <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/aboutUs_light.jpg" width="250" />
     <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/logout_light.jpg" width="250" />
-
-
-
-
 </p>
 
 - [cached_network_image](https://pub.dev/packages/cached_network_image)
