@@ -13,3 +13,11 @@
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/07.png" width="250" />
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/08.png" width="250" />
 </p>
+
+- [cached_network_image](https://pub.dev/packages/cached_network_image)
+- [carousel_slider](https://pub.dev/packages/carousel_slider)
+- [cupertino_icons](https://pub.dev/packages/cupertino_icons)
+- [dio](https://pub.dev/packages/dio)
+- [flutter_bloc](https://pub.dev/packages/flutter_bloc)
+- [google_fonts](https://pub.dev/packages/google_fonts)
+- [shimmer](https://pub.dev/packages/shimmer)
