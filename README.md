@@ -4,7 +4,7 @@
 <a href="https://github.com/HusseinMohamed99/Super_Marko/releases/download/v2.0.0/Super.Marko.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
 ## Screenshots Light Theme:
 <p>
-  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/splash_light.png" width="250" height="500" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/splash_light.png" width="250" height="550" />
   <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/onBoarding_light1.jpg" width="250" />
   <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/onBoarding_light2.jpg" width="250" />
   <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/onBoarding_light3.jpg" width="250" />
