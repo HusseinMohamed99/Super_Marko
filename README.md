@@ -70,10 +70,16 @@
     <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/logout_dark.jpg" width="250" />
 </p>
 
-- [cached_network_image](https://pub.dev/packages/cached_network_image)
-- [carousel_slider](https://pub.dev/packages/carousel_slider)
-- [cupertino_icons](https://pub.dev/packages/cupertino_icons)
-- [dio](https://pub.dev/packages/dio)
-- [flutter_bloc](https://pub.dev/packages/flutter_bloc)
-- [google_fonts](https://pub.dev/packages/google_fonts)
-- [shimmer](https://pub.dev/packages/shimmer)
+## Packages
+- [Cached Network Image](https://pub.dev/packages/cached_network_image)
+- [Carousel Slider](https://pub.dev/packages/carousel_slider)
+- [Dio](https://pub.dev/packages/dio)
+- [Flutter Bloc](https://pub.dev/packages/flutter_bloc)
+- [Google Fonts](https://pub.dev/packages/google_fonts)
+- [Shimmer](https://pub.dev/packages/shimmer)
+-  [Flutter Staggered Grid View](https://pub.dev/packages/flutter_staggered_grid_view)
+-   [Flutter Slidable](https://pub.dev/packages/flutter_slidable)
+-    [Flutter Screenutil](https://pub.dev/packages/flutter_screenutil)
+-   [Image Picker](https://pub.dev/packages/image_picker)
+-  [Shared Preferences](https://pub.dev/packages/shared_preferences)
+-   [Awesome Dialog](https://pub.dev/packages/awesome_dialog)
