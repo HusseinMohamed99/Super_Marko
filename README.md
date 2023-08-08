@@ -4,8 +4,8 @@
 <a href="https://github.com/HusseinMohamed99/Super_Marko/releases/download/v2.0.0/Super.Marko.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
 ## Screenshots
 <p>
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/01.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/02.png" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/splash_light.png" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/splash_dark.png" width="250" />
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/03.png" width="250" />
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/04.png" width="250" />
   <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/05.png" width="250" />
