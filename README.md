@@ -5,13 +5,39 @@
 ## Screenshots
 <p>
   <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/splash_light.png" width="250" />
-  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/splash_dark.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/03.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/04.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/05.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/06.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/07.png" width="250" />
-  <img src="https://github.com/mohamadayash1/flutter-movie-app/blob/main/screenshots/08.png" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/onBoarding_light1.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/onBoarding_light2.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/onBoarding_light3.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/onBoarding_light4.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/register_light1.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/register_light2.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/login_light1.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/login_light2.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/home_light.jpg" width="250" />
+    <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/productDetails_light.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/category_light.jpg" width="250" />
+    <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/product_light.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/cart_light1.jpg" width="250" />
+    <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/order_light.jpg" width="250" />
+    <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/cart_light2.jpg" width="250" />
+    <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/favorite_light1.jpg" width="250" />
+    <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/favorite_light2.jpg" width="250" />
+    <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/search_light1.jpg" width="250" />
+    <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/search_light2.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/settings_light.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/profile_light.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/notifications_light.jpg" width="250" />
+    <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/myOrder_light.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/changePassword_light.jpg" width="250" /> 
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/complaints_light.jpg" width="250" /> 
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/theme_light.jpg" width="250" />  
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/faqs_light.jpg" width="250" />
+  <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/aboutUs_light.jpg" width="250" />
+    <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/logout_light.jpg" width="250" />
+
+
+
+
 </p>
 
 - [cached_network_image](https://pub.dev/packages/cached_network_image)
