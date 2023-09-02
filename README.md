@@ -2,6 +2,14 @@
 
 ## Download The App![GitHub All Releases](https://img.shields.io/github/downloads/HusseinMohamed99/Super_Marko/total?color=green)
 <a href="https://github.com/HusseinMohamed99/Super_Marko/releases/download/v2.0.0/Super.Marko.apk"> <img src="https://playerzon.com/asset/download.png" width="200"></img></a>
+
+Developed an application that connects to APIs to show products, search products by name, add/remove to/from favorites and cart, and edit profile information
+Used state management (Bloc/Cubit) to manage the state of the application
+Implemented shared preferences to store user data
+Created a responsive UI that adapts to different screen sizes
+Used the MVVM architectural pattern to design the application
+Added a theme mode to allow users to change the appearance of the application
+
 ## Screenshots Light Theme:
 <p>
   <img src="https://github.com/HusseinMohamed99/Super_Marko/blob/master/assets/screenShots/splash_light.jpg" width="250" />
