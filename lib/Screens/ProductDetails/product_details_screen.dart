@@ -41,71 +41,52 @@ class ProductDetailsScreen extends StatelessWidget {
           key: scaffoldKey,
           body: (state is! ProductLoadingStates)
               ? AnnotatedRegion<SystemUiOverlayStyle>(
-                  value: SystemUiOverlayStyle(
-                    statusBarColor: Colors.black.withOpacity(0.3),
-                    statusBarIconBrightness: Brightness.light,
+                  value: const SystemUiOverlayStyle(
+                    statusBarColor: Colors.transparent,
+                    statusBarIconBrightness: Brightness.dark,
                   ),
-                  child: Stack(
-                    children: [
-                      CarouselSlider.builder(
-                        itemCount: productModel!.images!.length,
-                        itemBuilder: (context, index, n) {
-                          return SizedBox(
+                  child: CarouselSlider.builder(
+                    itemCount: productModel!.images!.length,
+                    itemBuilder: (context, index, n) {
+                      return Stack(
+                        children: [
+                          SizedBox(
                             width: double.infinity,
                             child: ImageWithShimmer(
                               imageUrl: productModel.images![index],
                               width: double.infinity,
-                              height: 200.h,
-                            ),
-                          );
-                        },
-                        options: CarouselOptions(
-                          onPageChanged: (index, reason) {
-                            cubit.onPageChange(index);
-                          },
-                          autoPlay: true,
-                          height: 300.h,
-                          viewportFraction: 1,
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enableInfiniteScroll: true,
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 320).r,
-                          child: AnimatedSmoothIndicator(
-                            count: cubit.productResponse!.data!.images!.length,
-                            activeIndex: cubit.activeIndex,
-                            effect: ExpandingDotsEffect(
-                              dotColor: AppMainColors.greyColor,
-                              dotHeight: 10.h,
-                              dotWidth: 10.w,
-                              expansionFactor: 4,
-                              spacing: 5,
-                              activeDotColor: AppMainColors.redColor,
+                              height: double.infinity,
                             ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15.0, top: 35.0).r,
-                        child: CircleAvatar(
-                          backgroundColor: AppMainColors.greyColor,
-                          radius: 20.r,
-                          child: IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(
-                              IconBroken.Arrow___Left_2,
-                              color: AppMainColors.orangeColor,
-                              size: 24.sp,
+                          Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 20).r,
+                              child: AnimatedSmoothIndicator(
+                                count:
+                                    cubit.productResponse!.data!.images!.length,
+                                effect: ExpandingDotsEffect(
+                                  dotColor: AppMainColors.greyColor,
+                                  dotHeight: 10.h,
+                                  dotWidth: 10.w,
+                                  expansionFactor: 4,
+                                  spacing: 5,
+                                  activeDotColor: AppMainColors.redColor,
+                                ),
+                                activeIndex: index,
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    ],
+                        ],
+                      );
+                    },
+                    options: CarouselOptions(
+                      autoPlay: true,
+                      height: 300.h,
+                      viewportFraction: 1,
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enableInfiniteScroll: true,
+                    ),
                   ),
                 )
               : const Center(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -67,101 +68,106 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        actions: [
-          defaultTextButton(
-            function: submit,
-            text: 'Skip',
-            color: AppMainColors.orangeColor,
-            context: context,
-          ),
-        ],
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
       ),
-      body: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          CustomPaint(
-            size: Size(double.infinity, (300 * 1.688).toDouble()),
-            painter: RPSCustomPainter(),
-          ),
-          Column(
-            children: [
-              Expanded(
-                child: PageView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  onPageChanged: (int index) {
-                    if (index == onBoarding.length - 1) {
-                      setState(() {
-                        isLast = true;
-                      });
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          actions: [
+            defaultTextButton(
+              function: submit,
+              text: 'Skip',
+              color: AppMainColors.orangeColor,
+              context: context,
+            ),
+          ],
+        ),
+        body: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            CustomPaint(
+              size: Size(double.infinity, (300 * 1.688).toDouble()),
+              painter: RPSCustomPainter(),
+            ),
+            Column(
+              children: [
+                Expanded(
+                  child: PageView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    onPageChanged: (int index) {
+                      if (index == onBoarding.length - 1) {
+                        setState(() {
+                          isLast = true;
+                        });
+                      } else {
+                        setState(() {
+                          isLast = false;
+                        });
+                      }
+                    },
+                    controller: pageController,
+                    itemBuilder: (context, index) => OnBoardingItem(
+                      onBoardingModel: onBoarding[index],
+                    ),
+                    itemCount: onBoarding.length,
+                  ),
+                ),
+                SizedBox(
+                  height: 20.h,
+                ),
+                FloatingActionButton(
+                  shape: StadiumBorder(
+                    side: BorderSide(
+                      color: Colors.white,
+                      width: 5.w,
+                    ),
+                  ),
+                  child: Icon(
+                    IconBroken.Arrow___Right_2,
+                    size: 35.sp,
+                  ),
+                  onPressed: () {
+                    if (isLast) {
+                      submit();
                     } else {
-                      setState(() {
-                        isLast = false;
-                      });
+                      pageController.nextPage(
+                        duration: const Duration(
+                          milliseconds: 780,
+                        ),
+                        curve: Curves.bounceInOut,
+                      );
                     }
                   },
-                  controller: pageController,
-                  itemBuilder: (context, index) => OnBoardingItem(
-                    onBoardingModel: onBoarding[index],
-                  ),
-                  itemCount: onBoarding.length,
                 ),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              FloatingActionButton(
-                shape: StadiumBorder(
-                  side: BorderSide(
-                    color: Colors.white,
-                    width: 5.w,
-                  ),
+                SizedBox(
+                  height: 60.h,
                 ),
-                child: Icon(
-                  IconBroken.Arrow___Right_2,
-                  size: 35.sp,
-                ),
-                onPressed: () {
-                  if (isLast) {
-                    submit();
-                  } else {
-                    pageController.nextPage(
-                      duration: const Duration(
-                        milliseconds: 780,
+                Padding(
+                  padding: const EdgeInsets.all(20).r,
+                  child: Row(
+                    children: [
+                      SmoothPageIndicator(
+                        controller: pageController,
+                        count: onBoarding.length,
+                        effect: const ExpandingDotsEffect(
+                          dotWidth: 10,
+                          dotHeight: 10,
+                          dotColor: AppMainColors.greyColor,
+                          activeDotColor: AppMainColors.orangeColor,
+                          radius: 20,
+                          spacing: 6,
+                          expansionFactor: 4,
+                        ),
                       ),
-                      curve: Curves.bounceInOut,
-                    );
-                  }
-                },
-              ),
-              SizedBox(
-                height: 60.h,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20).r,
-                child: Row(
-                  children: [
-                    SmoothPageIndicator(
-                      controller: pageController,
-                      count: onBoarding.length,
-                      effect: const ExpandingDotsEffect(
-                        dotWidth: 10,
-                        dotHeight: 10,
-                        dotColor: AppMainColors.greyColor,
-                        activeDotColor: AppMainColors.orangeColor,
-                        radius: 20,
-                        spacing: 6,
-                        expansionFactor: 4,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

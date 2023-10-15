@@ -32,6 +32,15 @@ class SettingScreen extends StatelessWidget {
           pop(context);
           showToast(
               text: ' Change Password Success', state: ToastStates.success);
+          logOut(context);
+        }
+        if (state is ChangePasswordErrorState) {
+          pop(context);
+          showToast(text: ' Change Password Error', state: ToastStates.error);
+        }
+        if (state is AddComplaintsErrorState) {
+          pop(context);
+          showToast(text: 'Add Complaints Error', state: ToastStates.error);
         }
       },
       builder: (context, state) {

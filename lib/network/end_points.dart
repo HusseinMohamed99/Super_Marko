@@ -30,4 +30,4 @@ const complaints = 'complaints';
 
 const orders = 'orders';
 
-const newPassword = 'change-password';
+const changeOldPassword = 'change-password';

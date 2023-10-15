@@ -440,13 +440,6 @@ class MainCubit extends Cubit<MainStates> {
     searchModel;
   }
 
-  int activeIndex = 0;
-
-  void onPageChange(int index) {
-    activeIndex = index;
-    emit(OnPageChangeState());
-  }
-
   void addAddress({
     required String name,
     required String city,
@@ -560,7 +553,7 @@ class MainCubit extends Cubit<MainStates> {
   }) {
     emit(ChangePasswordLoadingState());
     DioHelper.postData(
-      url: newPassword,
+      url: changeOldPassword,
       token: token,
       data: {
         'current_password': currentPassword,
