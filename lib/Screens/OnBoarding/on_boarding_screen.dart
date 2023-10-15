@@ -83,7 +83,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         alignment: Alignment.bottomCenter,
         children: [
           CustomPaint(
-            size: Size(400, (300 * 1.688).toDouble()),
+            size: Size(double.infinity, (300 * 1.688).toDouble()),
             painter: RPSCustomPainter(),
           ),
           Column(

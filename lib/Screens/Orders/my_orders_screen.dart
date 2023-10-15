@@ -18,8 +18,7 @@ class OrdersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<MainCubit, MainStates>(
-      listener: (context, state) {
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         MainCubit cubit = MainCubit.get(context);
         orderLength = cubit.ordersModel!.data!.ordersDetails.length;
@@ -42,34 +41,41 @@ class OrdersScreen extends StatelessWidget {
               ),
             ),
           ),
-          body: cubit.ordersModel!.data!.ordersDetails.isEmpty || MainCubit.get(context).ordersModel ==null? Column(
-            children: [
-              SvgPicture.asset(Assets.imagesNodata),
-              Text(
-                'Your Order is empty',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-              Text(
-                'Be Sure to fill your order with something you like',
-                style: Theme.of(context).textTheme.labelLarge,
-              )
-            ],
-          ) :ConditionalBuilder(
-            condition: state is !GetOrdersLoadingState || MainCubit.get(context).ordersModel != null,
-            builder: (BuildContext context) {return ListView.separated(
-              padding: const EdgeInsets.all(15.0).r,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return MyOrderItem(index: index);
-              },
-              separatorBuilder: (context, index) {
-                return SizedBox(height: 10.h);
-              },
-              itemCount: cubit.ordersModel!.data!.ordersDetails.length,
-            );  },
-            fallback: (BuildContext context) {return const Center(child: CircularProgressIndicator());  },
-
-          ),
+          body: cubit.ordersModel!.data!.ordersDetails.isEmpty ||
+                  MainCubit.get(context).ordersModel == null
+              ? Column(
+                  children: [
+                    SvgPicture.asset(Assets.imagesNodata),
+                    Text(
+                      'Your Order is empty',
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    Text(
+                      'Be Sure to fill your order with something you like',
+                      style: Theme.of(context).textTheme.labelLarge,
+                    )
+                  ],
+                )
+              : ConditionalBuilder(
+                  condition: state is! GetOrdersLoadingState ||
+                      MainCubit.get(context).ordersModel != null,
+                  builder: (BuildContext context) {
+                    return ListView.separated(
+                      padding: const EdgeInsets.all(15.0).r,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return MyOrderItem(index: index);
+                      },
+                      separatorBuilder: (context, index) {
+                        return SizedBox(height: 10.h);
+                      },
+                      itemCount: cubit.ordersModel!.data!.ordersDetails.length,
+                    );
+                  },
+                  fallback: (BuildContext context) {
+                    return const Center(child: CircularProgressIndicator());
+                  },
+                ),
         );
       },
     );

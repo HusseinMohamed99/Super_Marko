@@ -4,7 +4,7 @@ class OrdersModel {
 
   OrdersModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
-    data = Data.fromJson(json['data']);
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
 }
 
@@ -16,15 +16,15 @@ class Data {
     json['data'].forEach((v) {
       ordersDetails.add(OrdersDetails.fromJson(v));
     });
-    // if (json['data'] != null) {
-    //   ordersDetails = [];
-    //   json['data'].forEach((v) {
-    //     ordersDetails.add(OrdersDetails.fromJson(v));
-    //   });
-    // }
-    // json['data'].forEach((value) {
-    //   ordersDetails!.add(OrdersDetails.fromJson(value));
-    // });
+    if (json['data'] != null) {
+      ordersDetails = [];
+      json['data'].forEach((v) {
+        ordersDetails.add(OrdersDetails.fromJson(v));
+      });
+    }
+    json['data'].forEach((value) {
+      ordersDetails.add(OrdersDetails.fromJson(value));
+    });
   }
 }
 

@@ -41,10 +41,11 @@ class ProfileScreen extends StatelessWidget {
           builder: (context) => Scaffold(
             appBar: AppBar(
               automaticallyImplyLeading: false,
+              elevation: 0,
             ),
             body: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(20.0).r,
+                padding: const EdgeInsets.symmetric(horizontal: 20).r,
                 child: Form(
                   key: formKey,
                   child: Column(
@@ -129,6 +130,9 @@ class ProfileScreen extends StatelessWidget {
                         },
                         label: 'Phone',
                         prefix: IconBroken.Call,
+                      ),
+                      SizedBox(
+                        height: 40.h,
                       ),
                       defaultMaterialButton(
                         function: () {

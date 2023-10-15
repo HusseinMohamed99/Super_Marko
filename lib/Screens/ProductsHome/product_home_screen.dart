@@ -42,205 +42,113 @@ class ProductsScreen extends StatelessWidget {
           condition: MainCubit.get(context).homeModel != null &&
               MainCubit.get(context).categoriesModel != null,
           builder: (context) => ProductBuilder(
-             model: MainCubit.get(context).homeModel!,
-              categoriesModel: MainCubit.get(context).categoriesModel!,
-              ),
+            model: MainCubit.get(context).homeModel!,
+            categoriesModel: MainCubit.get(context).categoriesModel!,
+          ),
           fallback: (context) =>
               const Center(child: CircularProgressIndicator()),
         );
       },
     );
   }
-  //
-  // Widget productsBuilder(
-  //         HomeModel model, CategoriesModel categoriesModel, context) =>
-  //     SingleChildScrollView(
-  //       physics: const BouncingScrollPhysics(),
-  //       child: Column(
-  //         crossAxisAlignment: CrossAxisAlignment.start,
-  //         children: [
-  //           SizedBox(
-  //             width: double.infinity,
-  //             child: CarouselSlider(
-  //               items: model.data!.banners
-  //                   .map(
-  //                     (e) => Padding(
-  //                       padding: const EdgeInsets.symmetric(horizontal: 8).r,
-  //                       child: SizedBox(
-  //                         width: double.infinity,
-  //                         height: 300.h,
-  //                         child: ClipRRect(
-  //                           borderRadius: BorderRadius.circular(30).r,
-  //                           child: ImageWithShimmer(
-  //                             imageUrl: '${e.image}',
-  //                             width: double.infinity,
-  //                             height: double.infinity,
-  //                           ),
-  //                         ),
-  //                       ),
-  //                     ),
-  //                   )
-  //                   .toList(),
-  //               options: CarouselOptions(
-  //                 autoPlay: true,
-  //               ),
-  //             ),
-  //           ),
-  //           SizedBox(height: 30.h),
-  //           Padding(
-  //             padding: const EdgeInsets.all(10).r,
-  //             child: Column(
-  //               crossAxisAlignment: CrossAxisAlignment.start,
-  //               children: [
-  //                 Text(
-  //                   'Categories',
-  //                   style: Theme.of(context).textTheme.titleLarge,
-  //                 ),
-  //                 Container(
-  //                   height: 150.h,
-  //                   padding: const EdgeInsets.symmetric(vertical: 10.0).r,
-  //                   child: Scrollbar(
-  //                     thickness: 1,
-  //                     child: ListView.separated(
-  //                       padding: const EdgeInsetsDirectional.only(
-  //                           start: 10.0, top: 10),
-  //                       physics: const BouncingScrollPhysics(),
-  //                       scrollDirection: Axis.horizontal,
-  //                       itemBuilder: (context, index) => CategoriesItem(
-  //                         dataModel: categoriesModel.data!.data[index],
-  //                       ),
-  //                       separatorBuilder: (context, index) => SizedBox(
-  //                         width: 10.w,
-  //                       ),
-  //                       itemCount: categoriesModel.data!.data.length,
-  //                     ),
-  //                   ),
-  //                 ),
-  //                 SizedBox(height: 20.h),
-  //                 Text(
-  //                   'New Products',
-  //                   style: Theme.of(context).textTheme.titleLarge,
-  //                 ),
-  //                 StaggeredGridView.countBuilder(
-  //                   padding: const EdgeInsets.symmetric(vertical: 15).r,
-  //                   shrinkWrap: true,
-  //                   physics: const NeverScrollableScrollPhysics(),
-  //                   crossAxisCount: 2,
-  //                   crossAxisSpacing: 2,
-  //                   mainAxisSpacing: 3,
-  //                   itemCount: model.data!.products.length,
-  //                   staggeredTileBuilder: (index) {
-  //                     return StaggeredTile.count(1, index.isEven ? 1.8 : 1.4);
-  //                   },
-  //                   itemBuilder: (context, index) {
-  //                     return GridProducts(
-  //                         productModel: model.data!.products[index]);
-  //                   },
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         ],
-  //       ),
-  //     );
 }
 
 class ProductBuilder extends StatelessWidget {
-  const ProductBuilder({super.key, required this.model, required this.categoriesModel});
-final HomeModel model;
-final CategoriesModel categoriesModel;
+  const ProductBuilder(
+      {super.key, required this.model, required this.categoriesModel});
+  final HomeModel model;
+  final CategoriesModel categoriesModel;
   @override
   Widget build(BuildContext context) {
-    return
-      SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: double.infinity,
-              child: CarouselSlider(
-                items: model.data!.banners
-                    .map(
-                      (e) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8).r,
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 300.h,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30).r,
-                        child: ImageWithShimmer(
-                          imageUrl: '${e.image}',
-                          width: double.infinity,
-                          height: double.infinity,
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: double.infinity,
+            child: CarouselSlider(
+              items: model.data!.banners
+                  .map(
+                    (e) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8).r,
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 300.h,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30).r,
+                          child: ImageWithShimmer(
+                            imageUrl: '${e.image}',
+                            width: double.infinity,
+                            height: double.infinity,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                )
-                    .toList(),
-                options: CarouselOptions(
-                  autoPlay: true,
+                  )
+                  .toList(),
+              options: CarouselOptions(
+                autoPlay: true,
+              ),
+            ),
+          ),
+          SizedBox(height: 30.h),
+          Padding(
+            padding: const EdgeInsets.all(10).r,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Categories',
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
-              ),
-            ),
-            SizedBox(height: 30.h),
-            Padding(
-              padding: const EdgeInsets.all(10).r,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Categories',
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  Container(
-                    height: 150.h,
-                    padding: const EdgeInsets.symmetric(vertical: 10.0).r,
-                    child: Scrollbar(
-                      thickness: 1,
-                      child: ListView.separated(
-                        padding: const EdgeInsetsDirectional.only(
-                            start: 10.0, top: 10),
-                        physics: const BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) => CategoriesItem(
-                          dataModel: categoriesModel.data!.data[index],
-                        ),
-                        separatorBuilder: (context, index) => SizedBox(
-                          width: 10.w,
-                        ),
-                        itemCount: categoriesModel.data!.data.length,
+                Container(
+                  height: 150.h,
+                  padding: const EdgeInsets.symmetric(vertical: 10.0).r,
+                  child: Scrollbar(
+                    thickness: 1,
+                    child: ListView.separated(
+                      padding: const EdgeInsetsDirectional.only(
+                          start: 10.0, top: 10),
+                      physics: const BouncingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => CategoriesItem(
+                        dataModel: categoriesModel.data!.data[index],
                       ),
+                      separatorBuilder: (context, index) => SizedBox(
+                        width: 10.w,
+                      ),
+                      itemCount: categoriesModel.data!.data.length,
                     ),
                   ),
-                  SizedBox(height: 20.h),
-                  Text(
-                    'New Products',
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  StaggeredGridView.countBuilder(
-                    padding: const EdgeInsets.symmetric(vertical: 15).r,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 2,
-                    mainAxisSpacing: 3,
-                    itemCount: model.data!.products.length,
-                    staggeredTileBuilder: (index) {
-                      return StaggeredTile.count(1, index.isEven ? 1.8 : 1.4);
-                    },
-                    itemBuilder: (context, index) {
-                      return GridProducts(
-                          productModel: model.data!.products[index]);
-                    },
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(height: 20.h),
+                Text(
+                  'New Products',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                StaggeredGridView.countBuilder(
+                  padding: const EdgeInsets.symmetric(vertical: 15).r,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 2,
+                  mainAxisSpacing: 3,
+                  itemCount: model.data!.products.length,
+                  staggeredTileBuilder: (index) {
+                    return StaggeredTile.count(1, index.isEven ? 1.8 : 1.4);
+                  },
+                  itemBuilder: (context, index) {
+                    return GridProducts(
+                        productModel: model.data!.products[index]);
+                  },
+                ),
+              ],
             ),
-          ],
-        ),
-      );
+          ),
+        ],
+      ),
+    );
   }
 }
 
