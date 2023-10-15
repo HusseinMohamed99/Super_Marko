@@ -10,7 +10,7 @@ import 'package:super_marko/network/dio_helper.dart';
 import 'package:super_marko/shared/bloc_observer.dart';
 import 'package:super_marko/shared/components/constants.dart';
 import 'package:super_marko/shared/cubit/cubit.dart';
-import 'package:super_marko/shared/cubit/internet_cubit.dart';
+import 'package:super_marko/shared/cubit/internet_bloc.dart';
 import 'package:super_marko/shared/cubit/state.dart';
 import 'package:super_marko/shared/enum/enum.dart';
 import 'package:super_marko/shared/styles/themes.dart';
