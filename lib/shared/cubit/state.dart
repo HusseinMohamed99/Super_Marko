@@ -9,6 +9,12 @@ abstract class MainStates {}
 
 class MainInitialStates extends MainStates {}
 
+class InternetStateInitial extends MainStates {}
+
+class InternetStateLost extends MainStates {}
+
+class InternetStateGained extends MainStates {}
+
 class AppChangeModeState extends MainStates {}
 
 class UserLoginLoadingStates extends MainStates {}

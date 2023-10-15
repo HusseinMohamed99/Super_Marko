@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:super_marko/Layout/layout_screen.dart';
 import 'package:super_marko/Screens/OnBoarding/on_boarding_screen.dart';
 import 'package:super_marko/Screens/login/login_screen.dart';
 import 'package:super_marko/network/cache_helper.dart';
@@ -11,10 +10,12 @@ import 'package:super_marko/network/dio_helper.dart';
 import 'package:super_marko/shared/bloc_observer.dart';
 import 'package:super_marko/shared/components/constants.dart';
 import 'package:super_marko/shared/cubit/cubit.dart';
+import 'package:super_marko/shared/cubit/internet_cubit.dart';
 import 'package:super_marko/shared/cubit/state.dart';
 import 'package:super_marko/shared/enum/enum.dart';
 import 'package:super_marko/shared/styles/themes.dart';
 import 'package:wakelock/wakelock.dart';
+import 'Screens/HomePage/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,10 +35,9 @@ void main() async {
     print(token);
   }
 
-
   if (onBoarding != null) {
     if (token != null) {
-      widget = const LayoutScreen();
+      widget = const HomePage();
     } else {
       widget = const LoginScreen();
     }
@@ -74,6 +74,7 @@ class Myapp extends StatelessWidget {
             ..getNotifications()
             ..changeAppMode(fromShared: isDark),
         ),
+        BlocProvider(create: (context) => InternetCubit())
       ],
       child: BlocConsumer<MainCubit, MainStates>(
           listener: (context, state) {},
@@ -97,7 +98,6 @@ class Myapp extends StatelessWidget {
                       : MainCubit.get(context).isDark
                           ? ThemeMode.light
                           : ThemeMode.dark,
-
                   debugShowCheckedModeBanner: false,
                   home: startWidget,
                 );

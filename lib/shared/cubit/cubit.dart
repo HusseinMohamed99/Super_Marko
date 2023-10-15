@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,7 +35,24 @@ import 'package:super_marko/shared/styles/colors.dart';
 import 'package:super_marko/shared/styles/icon_broken.dart';
 
 class MainCubit extends Cubit<MainStates> {
-  MainCubit() : super(MainInitialStates());
+  late final StreamSubscription connectivityStreamSubscription;
+  final Connectivity connectivity = Connectivity();
+  MainCubit() : super(MainInitialStates()) {
+    connectivityStreamSubscription =
+        connectivity.onConnectivityChanged.listen((result) {
+      if (result == ConnectivityResult.wifi ||
+          result == ConnectivityResult.mobile) {
+        emit(InternetStateGained());
+      } else {
+        emit(InternetStateLost());
+      }
+    });
+  }
+  @override
+  Future<void> close() {
+    connectivityStreamSubscription.cancel();
+    return super.close();
+  }
 
   static MainCubit get(context) => BlocProvider.of(context);
 
@@ -169,11 +188,11 @@ class MainCubit extends Cubit<MainStates> {
         });
       }
 
-       for (var element in homeModel!.data!.products) {
-         carting.addAll({
-           element.id: element.inCart,
-         });
-       }
+      for (var element in homeModel!.data!.products) {
+        carting.addAll({
+          element.id: element.inCart,
+        });
+      }
       emit(HomeSuccessStates());
     }).catchError((error) {
       if (kDebugMode) {
@@ -259,7 +278,7 @@ class MainCubit extends Cubit<MainStates> {
   CartModel? cartModel;
 
   void getCartData() {
-   emit(CartLoadingStates());
+    emit(CartLoadingStates());
     DioHelper.getData(url: carts, token: token).then((value) {
       cartModel = CartModel.fromJson(value.data);
 
@@ -399,10 +418,9 @@ class MainCubit extends Cubit<MainStates> {
     }
   }
 
-
   SearchModel? searchModel;
   var searchController = TextEditingController();
-  void getSearch( String text) {
+  void getSearch(String text) {
     emit(SearchLoadingStates());
     DioHelper.postData(url: search, token: token, data: {
       'search': text,
@@ -416,12 +434,11 @@ class MainCubit extends Cubit<MainStates> {
       emit(SearchErrorStates());
     });
   }
+
   void clearSearchData() {
     searchController.clear();
-    searchModel ;
+    searchModel;
   }
-
-
 
   int activeIndex = 0;
 

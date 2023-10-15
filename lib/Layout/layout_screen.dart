@@ -21,10 +21,7 @@ class LayoutScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text(
               cubit.titles[cubit.currentIndex],
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headlineSmall,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
             actions: [
               IconButton(
@@ -34,7 +31,7 @@ class LayoutScreen extends StatelessWidget {
                   color: AppMainColors.orangeColor,
                 ),
                 onPressed: () {
-                  navigateTo(context,  SearchScreen(MainCubit.get(context)));
+                  navigateTo(context, SearchScreen(MainCubit.get(context)));
                 },
               ),
               IconButton(
@@ -49,7 +46,6 @@ class LayoutScreen extends StatelessWidget {
             ],
           ),
           body: cubit.pages[cubit.currentIndex],
-
           bottomNavigationBar: BottomNavigationBar(
             elevation: 0,
             showSelectedLabels: false,
