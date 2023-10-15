@@ -10,6 +10,10 @@ Created a responsive UI that adapts to different screen sizes
 Used the MVVM architectural pattern to design the application
 Added a theme mode to allow users to change the appearance of the application
 
+Super Marko
+:-:
+<video src='https://github.com/HusseinMohamed99/Super_Marko/assets/84459939/4bf7a5f5-dfbf-4f3e-9a1a-e078e1630410' width=250/>|
+
 ## Screenshots Light Theme:
 <p> 
 
@@ -79,9 +83,6 @@ Added a theme mode to allow users to change the appearance of the application
   <img src="https://github.com/HusseinMohamed99/Super_Marko/assets/84459939/fb817bd5-0d85-4a42-a5ac-dfbfaaa35cc4" width="250" />
 </p>
 
-Super Marko
-:-:
-<video src='https://github.com/HusseinMohamed99/Super_Marko/assets/84459939/4bf7a5f5-dfbf-4f3e-9a1a-e078e1630410' width=250/>|
 
 
 
