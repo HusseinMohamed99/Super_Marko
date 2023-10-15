@@ -145,9 +145,9 @@ class MainCubit extends Cubit<MainStates> {
   }
 
   void updateUserData({
-    required String email,
-    required String name,
-    required String phone,
+    required String? email,
+    required String? name,
+    required String? phone,
     required image,
   }) {
     emit(UserUpdateLoadingStates());

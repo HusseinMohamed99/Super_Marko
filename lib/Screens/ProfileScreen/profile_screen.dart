@@ -2,7 +2,6 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:super_marko/model/login/login_model.dart';
 import 'package:super_marko/shared/components/buttons.dart';
 import 'package:super_marko/shared/components/constants.dart';
 import 'package:super_marko/shared/components/select_photo.dart';
@@ -28,13 +27,16 @@ class ProfileScreen extends StatelessWidget {
           showToast(
               text: 'Update Data Successfully', state: ToastStates.success);
         }
+        if (state is UserUpdateErrorStates) {
+          showToast(text: state.error, state: ToastStates.error);
+        }
       },
       builder: (context, state) {
         MainCubit cubit = MainCubit.get(context);
-        UserModel model = MainCubit.get(context).userData!;
-        emailController.text = model.data!.email!;
-        phoneController.text = model.data!.phone!;
-        nameController.text = model.data!.name!;
+
+        emailController.text = cubit.userData!.data!.email!;
+        phoneController.text = cubit.userData!.data!.phone!;
+        nameController.text = cubit.userData!.data!.name!;
 
         return ConditionalBuilder(
           condition: MainCubit.get(context).userData != null,
@@ -67,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
                                       cubit.profileImage!,
                                       fit: BoxFit.fill,
                                     ).image
-                                  : NetworkImage(model.data!.image!),
+                                  : NetworkImage(cubit.userData!.data!.image!),
                             ),
                           ),
                           CircleAvatar(
